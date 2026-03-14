@@ -30,11 +30,13 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # ─── Config ───────────────────────────────────────────────────────────────────
-DATABASE_URL = os.getenv(
-    "DATABASE_URL",
-    "postgresql+asyncpg://postgres:zteeelpass@localhost/zteeel_db"
-)
-JWT_SECRET = os.getenv("JWT_SECRET_KEY", "zteeel-secret")
+DATABASE_URL = os.getenv("DATABASE_URL")
+if not DATABASE_URL:
+    raise RuntimeError("DATABASE_URL environment variable is required")
+
+JWT_SECRET = os.getenv("JWT_SECRET_KEY")
+if not JWT_SECRET:
+    raise RuntimeError("JWT_SECRET_KEY environment variable is required")
 RAZORPAY_KEY_ID = os.getenv("RAZORPAY_KEY_ID", "")
 RAZORPAY_KEY_SECRET = os.getenv("RAZORPAY_KEY_SECRET", "")
 ALGORITHM = "HS256"
