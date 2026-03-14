@@ -1,0 +1,217 @@
+{
+  "project_name": "Zteeel",
+  "app_type": "React Native (Expo) - Mobile App",
+  "theme_strategy": "Dual Persona System",
+  "identities": {
+    "customer": {
+      "name": "Streetwear Utility",
+      "keywords": ["Urgent", "Hyper-local", "Raw", "Electric"],
+      "mode": "Light",
+      "visual_anchor": "Neo-Brutalist Pop"
+    },
+    "vendor": {
+      "name": "Command Center",
+      "keywords": ["Precise", "Calm", "Data-Rich", "Professional"],
+      "mode": "Dark",
+      "visual_anchor": "Swiss Utility"
+    }
+  },
+  "colors": {
+    "customer": {
+      "primary": "#FF5722",
+      "primary_foreground": "#FFFFFF",
+      "secondary": "#CCFF00",
+      "secondary_foreground": "#000000",
+      "background": "#F8F9FA",
+      "surface": "#FFFFFF",
+      "text_primary": "#121212",
+      "text_secondary": "#64748B",
+      "border": "#E2E8F0",
+      "success": "#10B981",
+      "error": "#EF4444",
+      "warning": "#F59E0B"
+    },
+    "vendor": {
+      "primary": "#3B82F6",
+      "primary_foreground": "#FFFFFF",
+      "secondary": "#10B981",
+      "secondary_foreground": "#FFFFFF",
+      "background": "#0F172A",
+      "surface": "#1E293B",
+      "text_primary": "#F8FAFC",
+      "text_secondary": "#94A3B8",
+      "border": "#334155",
+      "chart_1": "#3B82F6",
+      "chart_2": "#10B981",
+      "chart_3": "#F59E0B",
+      "chart_4": "#8B5CF6",
+      "chart_5": "#EC4899"
+    },
+    "shared": {
+      "transparent": "transparent",
+      "white": "#FFFFFF",
+      "black": "#000000",
+      "overlay": "rgba(0,0,0,0.5)"
+    }
+  },
+  "typography": {
+    "font_family": {
+      "heading": "SpaceGrotesk",
+      "body": "Manrope",
+      "fallback": "System"
+    },
+    "scale": {
+      "h1": { "size": 32, "lineHeight": 40, "weight": "700", "letterSpacing": -1 },
+      "h2": { "size": 24, "lineHeight": 32, "weight": "600", "letterSpacing": -0.5 },
+      "h3": { "size": 20, "lineHeight": 28, "weight": "600" },
+      "body_lg": { "size": 18, "lineHeight": 28, "weight": "400" },
+      "body": { "size": 16, "lineHeight": 24, "weight": "400" },
+      "caption": { "size": 14, "lineHeight": 20, "weight": "500", "color": "#64748B" },
+      "tiny": { "size": 12, "lineHeight": 16, "weight": "600", "textTransform": "uppercase", "letterSpacing": 1 }
+    }
+  },
+  "spacing": {
+    "scale": {
+      "xs": 4,
+      "s": 8,
+      "m": 16,
+      "l": 24,
+      "xl": 32,
+      "xxl": 48
+    },
+    "layout": {
+      "screen_padding": 20,
+      "card_padding": 16,
+      "gap_small": 8,
+      "gap_medium": 16,
+      "gap_large": 24
+    }
+  },
+  "border_radius": {
+    "small": 8,
+    "medium": 12,
+    "large": 16,
+    "pill": 9999
+  },
+  "shadows": {
+    "soft": {
+      "shadowColor": "#000",
+      "shadowOffset": { "width": 0, "height": 4 },
+      "shadowOpacity": 0.06,
+      "shadowRadius": 8,
+      "elevation": 2
+    },
+    "medium": {
+      "shadowColor": "#000",
+      "shadowOffset": { "width": 0, "height": 8 },
+      "shadowOpacity": 0.12,
+      "shadowRadius": 16,
+      "elevation": 4
+    },
+    "hard": {
+      "shadowColor": "#000",
+      "shadowOffset": { "width": 4, "height": 4 },
+      "shadowOpacity": 1,
+      "shadowRadius": 0,
+      "elevation": 0
+    }
+  },
+  "layout_strategies": {
+    "customer_home": {
+      "type": "masonry_vertical",
+      "description": "A dense, high-energy feed of deals. Mix large 'Hero Deals' (full width) with smaller 'Quick Grabs' (half width)."
+    },
+    "vendor_dashboard": {
+      "type": "bento_grid",
+      "description": "Grid of analytic widgets. Dark mode cards with single bright data points."
+    }
+  },
+  "components": {
+    "Button": {
+      "variants": {
+        "primary": {
+          "backgroundColor": "primary",
+          "borderRadius": "pill",
+          "paddingVertical": 16,
+          "paddingHorizontal": 24,
+          "elevation": 0
+        },
+        "secondary": {
+          "backgroundColor": "secondary",
+          "borderRadius": "pill",
+          "paddingVertical": 16,
+          "paddingHorizontal": 24,
+          "borderWidth": 1,
+          "borderColor": "black"
+        },
+        "ghost": {
+          "backgroundColor": "transparent",
+          "paddingVertical": 12
+        }
+      }
+    },
+    "Card": {
+      "customer": {
+        "backgroundColor": "white",
+        "borderRadius": 16,
+        "borderWidth": 1,
+        "borderColor": "#E2E8F0",
+        "overflow": "hidden"
+      },
+      "vendor": {
+        "backgroundColor": "#1E293B",
+        "borderRadius": 12,
+        "borderWidth": 1,
+        "borderColor": "#334155"
+      }
+    },
+    "Input": {
+      "height": 56,
+      "borderRadius": 12,
+      "backgroundColor": "#F1F5F9",
+      "paddingHorizontal": 16,
+      "fontSize": 16,
+      "borderWidth": 1,
+      "borderColor": "transparent",
+      "focusBorderColor": "primary"
+    }
+  },
+  "visual_enhancers": {
+    "glassmorphism": {
+      "backgroundColor": "rgba(255, 255, 255, 0.8)",
+      "blurIntensity": 20,
+      "borderColor": "rgba(255, 255, 255, 0.3)",
+      "borderWidth": 1
+    },
+    "gradients": {
+      "clearance_deal": ["#FF5722", "#FF8A65"],
+      "slow_hour": ["#10B981", "#34D399"]
+    }
+  },
+  "assets": {
+    "images": {
+      "hero_burger": "https://images.unsplash.com/photo-1673166516558-3f1b88a22db8?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA0MTJ8MHwxfHNlYXJjaHw0fHxkZWxpY2lvdXMlMjBidXJnZXIlMjBjbG9zZSUyMHVwJTIwZGFyayUyMGJhY2tncm91bmR8ZW58MHx8fHwxNzczNDQ4MDM4fDA&ixlib=rb-4.1.0&q=85",
+      "sushi_platter": "https://images.unsplash.com/photo-1706267701242-c518dce7f113?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMzl8MHwxfHNlYXJjaHwyfHxzdXNoaSUyMHBsYXR0ZXIlMjB2aWJyYW50JTIwY29sb3JzJTIwdG9wJTIwdmlld3xlbnwwfHx8fDE3NzM0NDgwMzl8MA&ixlib=rb-4.1.0&q=85",
+      "street_market": "https://images.unsplash.com/photo-1760262492874-80283261b99c?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NTN8MHwxfHNlYXJjaHwxfHxidXN5JTIwaW5kaWFuJTIwc3RyZWV0JTIwZm9vZCUyMG1hcmtldCUyMG5pZ2h0fGVufDB8fHx8MTc3MzQ0ODA0MHww&ixlib=rb-4.1.0&q=85",
+      "map_marker_default": "https://cdn-icons-png.flaticon.com/512/684/684908.png",
+      "map_marker_active": "https://cdn-icons-png.flaticon.com/512/684/684908.png"
+    },
+    "icons": {
+      "library": "lucide-react-native",
+      "style": "strokeWidth={2} color={currentColor}"
+    }
+  },
+  "instructions_to_main_agent": [
+    "Do not use HTML tags (div, span, h1). Use React Native components: View, Text, TouchableOpacity, ScrollView, FlatList.",
+    "Use StyleSheet.create for styling. Do not use inline styles unless for dynamic values.",
+    "For shadows on Android, use 'elevation'. For iOS, use shadowColor/Offset/Opacity/Radius.",
+    "Use 'SafeAreaView' from 'react-native-safe-area-context' for screen wrappers.",
+    "Implement 'Expo Image' for better caching and performance instead of standard Image component.",
+    "For gradients, use 'expo-linear-gradient'.",
+    "Respect the 'Customer' vs 'Vendor' theme separation. Toggle theme based on user role context, not just system theme.",
+    "Ensure all touch targets are at least 44x44 points.",
+    "Use the provided image URLs for placeholders. Do not leave empty boxes.",
+    "For maps, use 'react-native-maps' with the custom dark JSON style for Vendor and Standard style for Customer.",
+    "Add 'data-testid' to all interactables."
+  ]
+}
