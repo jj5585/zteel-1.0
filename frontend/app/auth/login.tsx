@@ -38,9 +38,8 @@ export default function Login() {
   const handleGoogleLogin = async () => {
     setGoogleLoading(true);
     try {
-      // Use window.location.origin so the redirect works across all environments (preview, production)
-      const origin = typeof window !== "undefined" ? window.location.origin : BACKEND_URL;
-      const redirectUrl = origin + "/auth/callback";
+      // window.location.origin ensures correct redirect across all environments
+      const redirectUrl = (typeof window !== "undefined" ? window.location.origin : "") + "/auth/callback";
       const authUrl = `https://auth.emergentagent.com/?redirect=${encodeURIComponent(redirectUrl)}`;
       if (Platform.OS === "web") {
         if (typeof window !== "undefined") {
