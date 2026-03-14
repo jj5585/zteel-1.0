@@ -1,0 +1,57 @@
+{
+  "summary": "Backend API testing for Zteeel (FastAPI + PostgreSQL + PostGIS). All 21 tests pass after fixing 1 backend bug and correcting test assertions. Customer endpoints require JWT auth (not public as described).",
+  "backend_issues": {
+    "critical": [
+      {
+        "endpoint": "POST /api/orders",
+        "issue": "SQL syntax error: ':items::jsonb' mixes SQLAlchemy named param syntax with PostgreSQL cast - asyncpg rejects it. Fixed to 'cast(:items as jsonb)'",
+        "priority": "CRITICAL",
+        "status": "FIXED"
+      }
+    ],
+    "minor": [
+      {
+        "endpoint": "GET /api/customer/deals/nearby, GET /api/customer/vendors/nearby, GET /api/customer/vendors/{id}/menu, GET /api/customer/vendors/{id}/deals",
+        "issue": "All customer endpoints require JWT authentication (Depends(get_current_user)). Problem statement described them as public. This may be intentional design but needs clarification.",
+        "priority": "MEDIUM"
+      },
+      {
+        "endpoint": "GET /api/health",
+        "issue": "Returns status='ok' not 'healthy'. Minor inconsistency with typical health check conventions.",
+        "priority": "LOW"
+      }
+    ]
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [],
+    "react_native_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_zteeel_api.py",
+    "/app/test_reports/pytest/pytest_results.xml"
+  ],
+  "action_items": [
+    "Clarify if customer browse endpoints (nearby deals, nearby vendors, vendor menu/deals) should be public or require auth - currently all require JWT",
+    "The POST /api/vendor/deals schema uses 'type' field (not 'deal_type') and POST /api/vendor/rewards uses 'threshold','reward','color' fields - ensure frontend is using correct field names"
+  ],
+  "critical_code_review_comments": [
+    "server.py is 1282 lines - should be split into routers (auth, vendor, customer, orders, payments)",
+    "Multiple raw SQL INSERT statements with JSONB columns using mixed parameter syntax - check all JSONB inserts for same issue (only orders was found broken)",
+    "Customer browse APIs require auth - this prevents unauthenticated browsing of deals/vendors which may be a UX issue"
+  ],
+  "updated_files": [
+    "/app/backend/server.py (fixed cast(:items as jsonb) in POST /api/orders)",
+    "/app/backend/tests/test_zteeel_api.py (created new test file)"
+  ],
+  "success_rate": {
+    "backend": "100% (21/21 passing)",
+    "frontend": "not tested"
+  },
+  "seed_data_creation": "Registered TEST_customer_zteeel@example.com / testpass123 for customer tests. TEST_register_new@zteeel.com also attempted.",
+  "retest_needed": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "All backend APIs working. Customer endpoints require JWT. Payment is MOCKED (Razorpay placeholder). PostGIS nearby queries confirmed working with Mumbai Bandra coords. Vendor seed accounts: maharaja@zteeel.com/vendor123.",
+  "rca_of_issue": "POST /api/orders 500 error: SQLAlchemy text() with asyncpg driver cannot use '::' PostgreSQL cast syntax inside named parameters. ':items::jsonb' was interpreted as named param ':items' followed by '::jsonb' cast which fails. Fixed by using standard SQL CAST() function: 'cast(:items as jsonb)'."
+}
